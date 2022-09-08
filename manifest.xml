@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/Framework/App/Manifest/Schema/manifest-1.0.xsd">
     <meta>
-        <name>zeobv-s6-app-storefront</name>
-        <label>Label</label>
-        <label lang="de-DE">Name</label>
-        <description>A description</description>
-        <description lang="de-DE">Eine Beschreibung</description>
-        <author>Your Company Ltd.</author>
-        <copyright>(c) by Your Company Ltd.</copyright>
+        <name>ZeobvDayDeals</name>
+
+        <label>Day Deals</label>
+        <label lang="de-DE">Tagesangebot</label>
+        <label lang="nl-NL">Dag Deals</label>
+
+        <description>This app allows you to configure day deals for your customers.</description>
+        <description lang="de-DE">Mit dieser App können Sie Tagesangebote für Ihre Kunden konfigurieren.</description>
+        <description lang="nl-NL">Breng uw klanten terug naar uw winkel door herinneringen voor verlaten winkelwagentjes te sturen.</description>
+
+        <author>ZEO BV.</author>
+        <copyright>(c) by DizTech BV.</copyright>
         <version>1.0.0</version>
+
         <icon>Resources/config/plugin.png</icon>
-        <license>MIT</license>
+
+        <license>proprietary</license>
     </meta>
+    <custom-fields>
+        <!-- register each custom field set you may want to add -->
+        <custom-field-set>
+            <!-- the technical name of the custom field set, needs to be unique, therefor use your vendor prefix -->
+            <name>zeobv_day_deals_configuration</name>
+            <!-- Translatable, the label of the field set -->
+            <label>DayDeal</label>
+            <label lang="de-DE">Beispiel-Set</label>
+            <!-- define the entities to which your field set should be assigned -->
+            <related-entities>
+                <product/>
+            </related-entities>
+            <!-- define the fields in your set -->
+            <fields>
+                <!-- the element type, defines the type of the field -->
+                <!-- the name needs to be unique, therefore use your vendor prefix -->
+                <datetime name="zeobv_day_deal_date">
+                    <!-- Translatable, the label of the field -->
+                    <label>Input date day deal</label>
+                    <!-- Optional, Default = 1, order your fields by specifying the position -->
+                    <position>1</position>
+                    <!-- Optional, Default = false, mark a field as required -->
+                    <required>false</required>
+                    <!-- Optional, Translatable, the help text for the field -->
+                    <help-text>This date is used to
+<!--                    TODO: ENTER A DESCRIPTION FOR THE HELP BULB -->
+                    </help-text>
+                </datetime>
+            </fields>
+        </custom-field-set>
+    </custom-fields>
 </manifest>

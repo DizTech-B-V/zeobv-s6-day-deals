@@ -3,30 +3,23 @@
     <blocks>
         <block>
             <!-- A unique technical name for your block. We recommend to use a shorthand prefix for your company, e.g. "Swag" for shopware AG. -->
-            <name>Zeobv</name>
+            <name>zeobv-day-deal</name>
 
             <!-- The category your block is associated with. See the XSD for available categories. -->
-            <category>text-image</category>
+            <category>commerce</category>
 
             <!-- Your block's label which will be shown in the CMS module in the Administration. -->
-            <label>Two columns, text &amp; boxed image</label>
-            <label lang="de-DE">Zwei Spalten, Text &amp; gerahmtes Bild</label>
+            <label>Day Deal</label>
+            <label lang="de-DE">Tagesangebote</label>
 
             <!-- The slots that your block holds which again hold CMS elements. -->
             <slots>
                 <!-- A slot requires a unique name and a type which refers to the CMS element it shows. Right now you can only use the CMS elements provided by Shopware but at a later point you will be able to add custom elements too. -->
-                <slot name="left" type="text">
+                <slot name="default" type="product-box">
                     <!-- The slot requires some basic configuration. The following config-value elements highly depend on which element the slot holds. -->
                     <config>
                         <!-- The following config-value will be interpreted as 'verticalAlign: { source: "static", value: "top"}' in the JavaScript. -->
-                        <config-value name="vertical-align" source="static" value="top"/>
-                    </config>
-                </slot>
-
-                <slot name="right" type="image">
-                    <config>
-                        <config-value name="display-mode" source="static" value="auto"/>
-                        <config-value name="vertical-align" source="static" value="top"/>
+                        <config-value name="product" source="static" value="null"/>
                     </config>
                 </slot>
             </slots>

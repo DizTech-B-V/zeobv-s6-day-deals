@@ -15,7 +15,7 @@
             <!-- The slots that your block holds which again hold CMS elements. -->
             <slots>
                 <!-- A slot requires a unique name and a type which refers to the CMS element it shows. Right now you can only use the CMS elements provided by Shopware but at a later point you will be able to add custom elements too. -->
-                <slot name="default" type="product-box">
+                <slot name="day-deal" type="product-slider">
                     <!-- The slot requires some basic configuration. The following config-value elements highly depend on which element the slot holds. -->
                     <config>
                         <!-- The following config-value will be interpreted as 'verticalAlign: { source: "static", value: "top"}' in the JavaScript. -->

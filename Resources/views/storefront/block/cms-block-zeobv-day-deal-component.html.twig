@@ -44,21 +44,27 @@
                                 </div>
                             {% endif %}
                         {% endblock %}
-
                         {% block element_product_slider_inner %}
                             {% block element_product_slider_element %}
                                 <div class="product-slider-container"
                                      data-product-slider-container="true">
                                     {% for product in element.data.products.elements %}
                                         {% block element_product_slider_inner_item %}
-{#                                            {{ dump(element) }}#}
+
                                             <div class="product-slider-item">
                                                 {% sw_thumbnails 'product-image-thumbnails' with {
                                                     media: product.cover.media,
                                                     sizes: {'default': '300px'}
                                                 } %}
+
+                                                <div data-day-deal-plugin="true"></div>
+
+                                                <div class="zeobv-day-deal-add-to-cart">
+                                                    {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' with {
+                                                        product: product
+                                                    } %}
+                                                </div>
                                             </div>
-                                            <div class=""
                                         {% endblock %}
                                     {% endfor %}
                                 </div>

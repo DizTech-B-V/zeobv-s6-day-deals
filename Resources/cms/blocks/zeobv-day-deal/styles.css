@@ -1,35 +1,7 @@
-/*
- * Styling of your block preview in the CMS sidebar
- */
-.sw-cms-preview-swag-image-text-reversed {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    padding: 15px;
+.sw-cms-preview-zeobv-day-deal {
+    padding: 50px 15px;
+    text-align: center;
 }
-
-/*
- * Styling of your block in the CMS editor
- * Pattern: sw-cms-block-${block.name}-component
- */
-.sw-cms-block-swag-image-text-reversed-component {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-    grid-gap: 40px;
-}
-
-/*
- * Each slot will have an additional class
- * Pattern: sw-cms-slot-${slot.name}
- */
-.sw-cms-block-swag-image-text-reversed-component .sw-cms-slot-left {
-
-}
-
-/*
- * Each slot will have an additional class
- * Pattern: sw-cms-slot-${slot.name}
- */
-.sw-cms-block-swag-image-text-reversed-component .sw-cms-slot-right {
-
+.sw-cms-preview-zeobv-day-deal span {
+    font-size: 2em;
 }

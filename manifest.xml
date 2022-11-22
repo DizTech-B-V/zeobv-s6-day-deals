@@ -19,35 +19,28 @@
 
         <license>proprietary</license>
     </meta>
+
     <custom-fields>
-        <!-- register each custom field set you may want to add -->
         <custom-field-set>
-            <!-- the technical name of the custom field set, needs to be unique, therefor use your vendor prefix -->
             <name>zeobv_day_deals_configuration</name>
-            <!-- Translatable, the label of the field set -->
-            <label>DayDeal</label>
-            <label lang="de-DE">Beispiel-Set</label>
-            <!-- define the entities to which your field set should be assigned -->
+
+            <label>Day deal configuration</label>
+            <label lang="de-DE">Konfiguration des Tagesgeschäfts</label>
+            <label lang="nl-NL">Dagdeal configuratie</label>
+
             <related-entities>
                 <product/>
             </related-entities>
-            <!-- define the fields in your set -->
+
             <fields>
-                <!-- the element type, defines the type of the field -->
-                <!-- the name needs to be unique, therefore use your vendor prefix -->
                 <datetime name="zeobv_day_deal_date">
-                    <!-- Translatable, the label of the field -->
-                    <label>Input date day deal</label>
-                    <label lang="de-DE">Input date day deal</label>
-                    <label lang="nl-NL">Stel de datum van de dag deal in</label>
-                    <!-- Optional, Default = 1, order your fields by specifying the position -->
+                    <label>Day deal date</label>
+                    <label lang="de-DE">Datum des Tagesgeschäfts</label>
+                    <label lang="nl-NL">Dag deal datum</label>
+
                     <position>1</position>
-                    <!-- Optional, Default = false, mark a field as required -->
+
                     <required>false</required>
-                    <!-- Optional, Translatable, the help text for the field -->
-                    <help-text>This date is used to
-<!--                    TODO: ENTER A DESCRIPTION FOR THE HELP BULB -->
-                    </help-text>
                 </datetime>
             </fields>
         </custom-field-set>

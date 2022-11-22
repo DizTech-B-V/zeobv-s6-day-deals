@@ -1,139 +1,155 @@
 {% block block_zeobv_day_deal %}
-	<div class="block_zeobv_day_deal_component" style="background-color:{{ config('ZeobvDayDeals.config.backgroundColor') }}">
-		{% set element = block.slots.getSlot('day-deal') %}
-		{# <ul> #}
-		{#    {% for product in element.data.products %} #}
-		{#        <li>{{ product.translated.name }}</li> #}
-		{#    {% endfor %} #}
-		{# </ul> #}
+{% set element = block.slots.getSlot('day-deal') %}
 
-		{% set sliderConfig = element.fieldConfig.elements %}
+{% set sliderConfig = element.fieldConfig.elements %}
 
-			{% if element.data.products.elements %}
-			{% set dayDealProducts = element.data.products.elements|filter(product => product.customFields['zeobv_day_deal_date'] and product.customFields['zeobv_day_deal_date']|date("Y/m/d") === "now"|date("Y/m/d")) %}
-		{% else %}
-			{% set dayDealProducts = [] %}
-		{% endif %}
+{% if element.data.products.elements %}
+	{% set dayDealProducts = element.data.products.elements|filter(product => product.customFields['zeobv_day_deal_date'] and product.customFields['zeobv_day_deal_date']|date("Y/m/d") === "now"|date("Y/m/d")) %}
+{% else %}
+	{% set dayDealProducts = [] %}
+{% endif %}
 
-		<div class="col-12" data-cms-element-id="{{ element.id }}">
+{% if dayDealProducts|length > 0 %}
+<div class="zeobv-day-deal-block col-12">
 
-			<div class="cms-element-{{ element.type }}{% if sliderConfig.displayMode.value == " standard" and sliderconfig.verticalalign.value %} has-vertical-alignment{% endif %}">
-				{% block element_product_slider_alignment %}
-					{% if config.verticalAlign.value %}
-						<div class="cms-element-alignment{% if sliderConfig.verticalAlign.value == " center" %} align-self-center{% elseif sliderConfig.verticalAlign.value == " flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
-						{% endif %}
+	<div data-cms-element-id="{{ element.id }}">
 
-						{% set productSliderOptions = {
-                        productboxMinWidth: 100,
-                        slider: {
-                            gutter: 30,
-                            autoplayButtonOutput: false,
-                            nav: false,
-                            mouseDrag: sliderConfig.navigation.value ? false : true,
-                            controls: sliderConfig.navigation.value ? true : false,
-                            autoplay: sliderConfig.rotate.value ? true : false
-                        }
-                    } %}
-						{% block element_product_slider_slider %}
-							<div class="base-slider product-slider{% if sliderConfig.border.value %} has-border{% endif %}{% if sliderConfig.navigation.value %} has-nav{% endif %}" data-product-slider="true" data-product-slider-options="{{ productSliderOptions|json_encode }}">
+		<div class="cms-element-{{ element.type }}{% if sliderConfig.displayMode.value == " standard" and sliderconfig.verticalalign.value %} has-vertical-alignment{% endif %}">
+		{% block element_product_slider_alignment %}
+			{% if config.verticalAlign.value %}
+			<div class="cms-element-alignment{% if sliderConfig.verticalAlign.value == " center" %} align-self-center{% elseif sliderConfig.verticalAlign.value == " flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+			{% endif %}
 
-								{% block element_product_slider_inner %}
-									{% block element_product_slider_element %}
-										<div class="product-slider-container" data-product-slider-container="true">
-												
-											{% for product in dayDealProducts %}
-												{% block element_product_slider_inner_item %}
-														<a href="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}">
-													<div class="product-slider-item">
-														<div class="zeobv-day-deal-name-timer">
-															{% if sliderConfig.title.value %}
-																<div class="cms-element-title">
-																	<p class="cms-element-title-paragraph">{{ sliderConfig.title.value }}</p>
-																</div>
-															{% else %}
-																<p class="h2">
-																	{{ "zeobv-day-deals.default-slider-title.part1"|trans }}
-																	<svg class="clockiconsvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
-																		<path d="M13 12v-5h-1.999v6.999h5.999v-1.999h-4zm-12.197-4.285c-1.261-1.944-1.035-4.569.675-6.266 1.7-1.687 4.305-1.896 6.235-.645-3.171 1.219-5.692 3.741-6.91 6.911zm18.428 11.18c1.715-1.794 2.771-4.219 2.771-6.896 0-5.522-4.477-10-10.002-10-5.522 0-10 4.477-10 10 0 2.678 1.059 5.104 2.772 6.898l-1.736 4.506c-.159.394.288.759.643.522l3.581-3.122c1.412.761 3.026 1.195 4.742 1.195 1.717 0 3.334-.434 4.744-1.195l3.582 3.122c.355.237.803-.128.643-.522l-1.74-4.508zm-7.23 1.103c-4.412 0-8.001-3.588-8.001-8s3.589-8 8.001-8c4.412 0 8.002 3.588 8.002 8s-3.59 8-8.002 8zm10.553-18.52c-1.697-1.71-4.324-1.937-6.268-.675 3.17 1.218 5.693 3.739 6.912 6.91 1.25-1.931 1.041-4.535-.644-6.235z"/>
-																	</svg>
-																	{{ "zeobv-day-deals.default-slider-title.part2"|trans }}
-																</p>
-															{% endif %}
-															<div class="dayDealTimer" data-day-deal-plugin="true"></div>
-														</div>
-														<div class="product-image">
-															{% sw_thumbnails 'product-image-thumbnails' with {
-                                                                media: product.cover.media,
-                                                                sizes: {'default': '300px'}
-                                                            } %}
-																														
-													
-												<div class="zeobv-description">
-														<div class="zeobv-day-deal-product-name">
-															{{ product.name }}
-														</div>
-														<div class="zeobv-day-deal-price">
-															{% set isListPrice = product.calculatedPrice.listPrice != null %}
-															<span class="product-price{% if isListPrice %} with-list-price{% endif %}">
-																{{ product.calculatedPrice.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+			{% set productSliderOptions = {
+				productboxMinWidth: sliderConfig.elMinWidth.value,
+				slider: {
+					gutter: 30,
+					autoplayButtonOutput: false,
+					nav: false,
+					mouseDrag: sliderConfig.navigation.value ? false : true,
+					controls: sliderConfig.navigation.value ? true : false,
+					autoplay: sliderConfig.rotate.value ? true : false
+				}
+			} %}
 
-																{% if isListPrice %}
-																	{% set afterListPriceSnippetExists = "listing.afterListPrice"|trans|length > 0 %}
-																	{% set beforeListPriceSnippetExists = "listing.beforeListPrice"|trans|length > 0 %}
-																	{% set hideStrikeTrough = beforeListPriceSnippetExists or afterListPriceSnippetExists %}
+			{% block element_product_slider_slider %}
+				<div 
+					class="base-slider product-slider{% if sliderConfig.border.value %} has-border{% endif %}{% if sliderConfig.navigation.value %} has-nav{% endif %}" 
+					data-product-slider="true" 
+					data-product-slider-options="{{ productSliderOptions|json_encode }}"
+					style="background-color: {{ config('ZeobvDayDeals.config.backgroundColor') }}; border: {{ config('ZeobvDayDeals.config.borderSize') }} {{ config('ZeobvDayDeals.config.borderType') }} {{ config('ZeobvDayDeals.config.borderColor') }};"
+				>
 
-																	<span class="list-price">
-																		{% if beforeListPriceSnippetExists %}
-																			{{ "listing.beforeListPrice"|trans|trim|sw_sanitize }}
-																		{% endif %}
-
-																		<span class="list-price-price">{{ product.calculatedPrice.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
-
-																		{% if afterListPriceSnippetExists %}
-																			{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}
-																		{% endif %}
-
-																		<span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': product.calculatedPrice.listPrice.percentage })|sw_sanitize }}</span>
-																	</span>
-																{% endif %}
-															</span>
-														</div>
-														</div>
-														</div>
-													</div>
-													</a>
-												{% endblock %}
-											{% endfor %}
-										</div>
+					{% block element_product_slider_inner %}
+						{% block element_product_slider_element %}
+							<div class="product-slider-container" data-product-slider-container="true">
 									
-					
-									{% endblock %}
-
-									{% block element_product_slider_controls %}
-										{% if sliderConfig.navigation.value %}
-											<div class="product-slider-controls-container">
-												<div class="base-slider-controls" data-product-slider-controls="true">
-													{% block element_product_slider_controls_items %}
-														<button class="base-slider-controls-prev product-slider-controls-prev{% if sliderConfig.border.value %} has-border{% endif %}">
-															{% block element_product_slider_controls_items_prev_icon %}{% endblock %}
-														</button>
-														<button class="base-slider-controls-next product-slider-controls-next{% if sliderConfig.border.value %} has-border{% endif %}">
-															{% block element_product_slider_controls_items_next_icon %}{% endblock %}
-														</button>
-													{% endblock %}
-												</div>
+							{% for product in dayDealProducts %}
+								{% block element_product_slider_inner_item %}
+								
+									<div class="product-slider-item">
+										<div 
+											class="zeobv-day-deal" 
+											data-zeobv-day-deal-plugin="true"
+										>											
+											<div class="zeobv-day-deal__header">
+													<div class="zeobv-day-deal__title" style="color: {{ config('ZeobvDayDeals.config.titleColor') }}">
+														{{ "zeobv-day-deals.default-slider-title.part1"|trans }}<svg class="zeobv-day-deal__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="icon">
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M6.6951 2.23866C6.24019 1.25284 5.32568 0.498648 4.17546 0.295832C2.31042 -0.0330246 0.531916 1.2123 0.203059 3.07734C0.00117558 4.22228 0.392547 5.3346 1.15635 6.09895C2.94359 4.08757 4.30177 3.09528 6.6951 2.23866ZM20.6626 15.3901C19.676 20.9852 14.3405 24.7212 8.74536 23.7346C3.15023 22.748 -0.585736 17.4125 0.400835 11.8174C1.38741 6.22226 6.72292 2.48629 12.318 3.47286C17.9132 4.45943 21.6491 9.79495 20.6626 15.3901ZM18.0241 4.2368C18.7888 3.46602 19.9061 3.07009 21.0563 3.2729C22.9214 3.60176 24.1667 5.38027 23.8378 7.24531C23.6359 8.39025 22.8877 9.30163 21.9086 9.75865C20.917 7.2573 19.9802 5.86032 18.0241 4.2368ZM12.4188 7.84265L10.7303 7.54492L9.24219 15.9872L15.1519 17.0292L15.4496 15.3407L11.228 14.5963L12.4188 7.84265Z" fill="currentColor"></path>
+														</svg>{{ "zeobv-day-deals.default-slider-title.part2"|trans }}
+													</div>
+												<div 
+													class="zeobv-day-deal__timer" 
+													data-zeobv-day-deal-timer-plugin="true"
+													style="color: {{ config('ZeobvDayDeals.config.timerColor') }}"
+												></div>
 											</div>
-										{% endif %}
-									{% endblock %}
+											
+											<div class="zeobv-day-deal__image" style="background-color: {{ config('ZeobvDayDeals.config.backgroundAccentColor') }}">
+												{% sw_thumbnails 'product-image-thumbnails' with {
+													media: product.cover.media,
+													sizes: {'default': '300px'}
+												} %}
+											</div>
+											
+											<div class="zeobv-day-deal__description">
+												<div class="zeobv-day-deal__text" style="color: {{ config('ZeobvDayDeals.config.textColor') }}">
+													<a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+														class="zeobv-day-deal__href"
+														title="{{ product.name }}">
+														{{ product.name }}
+													</a>
+												</div>
+
+												<div class="zeobv-day-deal__price">
+													{% set isListPrice = product.calculatedPrice.listPrice != null %}
+													<span class="product-price{% if isListPrice %} with-list-price{% endif %}">
+														{{ product.calculatedPrice.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+
+														{% if isListPrice %}
+															{% set afterListPriceSnippetExists = "listing.afterListPrice"|trans|length > 0 %}
+															{% set beforeListPriceSnippetExists = "listing.beforeListPrice"|trans|length > 0 %}
+															{% set hideStrikeTrough = beforeListPriceSnippetExists or afterListPriceSnippetExists %}
+
+															<span class="list-price">
+																{% if beforeListPriceSnippetExists %}
+																	{{ "listing.beforeListPrice"|trans|trim|sw_sanitize }}
+																{% endif %}
+
+																<span class="list-price-price">{{ product.calculatedPrice.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+
+																{% if afterListPriceSnippetExists %}
+																	{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}
+																{% endif %}
+
+																<span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': product.calculatedPrice.listPrice.percentage })|sw_sanitize }}</span>
+															</span>
+														{% endif %}
+													</span>
+												</div>
+
+												{% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+											</div>
+										</div>
+									</div>
+								
 								{% endblock %}
+							{% endfor %}
+
 							</div>
 						{% endblock %}
-						{% if config.verticalAlign.value %}
-						</div>
-					{% endif %}
-				{% endblock %}
+
+						{% block element_product_slider_controls %}
+							{% if sliderConfig.navigation.value %}
+								<div class="product-slider-controls-container">
+									<div class="base-slider-controls" data-product-slider-controls="true">
+										{% block element_product_slider_controls_items %}
+											<button class="base-slider-controls-prev product-slider-controls-prev{% if sliderConfig.border.value %} has-border{% endif %}">
+												{% block element_product_slider_controls_items_prev_icon %}
+														{% sw_icon 'arrow-head-left' %}
+												{% endblock %}
+											</button>
+											<button class="base-slider-controls-next product-slider-controls-next{% if sliderConfig.border.value %} has-border{% endif %}">
+												{% block element_product_slider_controls_items_next_icon %}
+														{% sw_icon 'arrow-head-right' %}
+												{% endblock %}
+											</button>
+										{% endblock %}
+									</div>
+								</div>
+							{% endif %}
+						{% endblock %}
+					{% endblock %}
+				</div>
+			{% endblock %}
+
+			{% if config.verticalAlign.value %}
 			</div>
+			{% endif %}
+		{% endblock %}
 		</div>
 	</div>
 </div>
+{% endif %}
+
 {% endblock %}

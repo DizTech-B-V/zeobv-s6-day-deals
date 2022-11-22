@@ -1,7 +1,8 @@
 {
     "zeobv-day-deals": {
         "default-slider-title": {
-            "part1": "Dag" 
+            "part1": "Dag",
+            "part2": "Deal" 
         }
     }
 }

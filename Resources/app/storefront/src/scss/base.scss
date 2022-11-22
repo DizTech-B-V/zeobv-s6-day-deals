@@ -1,68 +1,117 @@
-.div-splitter {
-    display: inline;
-}
-.block_zeobv_day_deal_component {
-    width: 584px;
-    height: 268px;
-}
-
-.BlockTitle {
-    color: black;
-    font-size: 150px;
-    font-weight: bolder;
+.zeobv-day-deal-block {
+    .product-slider-controls-prev {
+        left: 0;
+    }
+    .product-slider-controls-next {
+        right: 0;
+    }
 }
 
-.h2 {
-    color: rgb(1,0,165);
-    font-size: 45px;
-}
+.zeobv-day-deal {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'image'
+        'text';
+    padding: 24px 16px;
+    text-decoration: none !important;
 
-.product-image img {
-    align-items: center;
-    width: 220px;
-    height: 220px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border-radius: 5px;
-}
+    &--wide-view {
+        grid-template-areas:
+            'image header'
+            'image text';
+        grid-template-columns: auto 1fr;
 
-.zeobv-day-deal-name-timer {
-    display: flex;
-    flex-direction: column;
-    float: right;
-    margin-top: 80px;
-    align-items: center;
-    text-align: center;
-    color: #0000a4;
-}
+        .zeobv-day-deal {
+            &__image {
+                width: 220px;
+                height: 220px;
+                margin: 0 16px 0 0;
+                padding-top: 0;
+            }
 
-.zeobv-description {
-    display: block;
-    flex-direction: column;
-    float: right;
-    text-align: center;
-    padding-right: 7px;
-    margin-top: -120px;
-}
+            &__price {
+                .list-price {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 
-.zeobv-day-deal-product-name {
-    position: relative;
-    top: 5px;
-}
+    &__header {
+        display: flex;
+        flex-direction: column;
+        grid-area: header;
+        align-items: center;
+        justify-content: center;
+        color: #0000a4;
+    }
 
-.dayDealTimer {
-    color: white;
-    font-size: x-large;
-    position: relative;
-    top: -13px;
-}
+    &__title {
+        padding: 0;
+        font-family: produkt, arial, helvetica, sans-serif;
+        font-weight: 700;
+        line-height: 1.25;
+        font-size: 1.875rem;
+        color: inherit;
+    }
 
-.zeobv-day-deal-product-name {
-    font-size: large;
-    color: black;
-}
-.clockiconsvg {
-    width: auto;
-    height: 40px;
-    color: rgb(1,0,165);
+    &__timer {
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    &__image {
+        position: relative;
+        display: block;
+        grid-area: image;
+        width: 80%;
+        padding-top: 80%;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 24px auto;
+
+        @media (min-width: 64em) {
+            width: 100%;
+            align-items: flex-start;
+            padding-top: 100%;
+        }
+
+        img {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            -o-object-fit: contain;
+            object-fit: contain;
+        }
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        grid-area: text;
+        align-items: center;
+        color: #03031a;
+        text-align: center;
+        & > {
+            margin: 0;
+            font-family: produkt, arial, helvetica, sans-serif;
+            font-size: 1.375rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+    }
+
+    &__text {
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    &__price {
+        .list-price {
+            display: block;
+        }
+    }
 }

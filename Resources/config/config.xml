@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../vendors/6.4.15.0/shopware/core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+    <title>ZeobvDayDeals</title>
+
+    <input-field type="bool">
+        <name>isActive</name>
+        <label>Active</label>
+        <defaultValue>true</defaultValue>
+    </input-field>
+
+
+    <input-field type="colorpicker">
+        <name>backgroundColor</name>
+        <label>Background Color</label>
+        <defaultValue>#080808</defaultValue>
+    </input-field>
+
+
+    <input-field type="colorpicker">
+        <name>borderColor</name>
+        <label>Border Color</label>
+        <placeholder>#fff</placeholder>
+        <copyable>true</copyable>
+        <defaultValue>true</defaultValue>
+    </input-field>
+
+    <input-field type="int">
+        <name>borderSize</name>
+        <label>Border Size</label>
+        <placeholder>4px</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+    <input-field type="colorpicker">
+        <name>titleColor</name>
+        <label>Title Color</label>
+        <placeholder>blue</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+    <input-field type="colorpicker">
+        <name>textColor</name>
+        <label>Text Color</label>
+        <placeholder>blue</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+    <input-field>
+        <name>buttonText</name>
+        <label>Button Text</label>
+        <placeholder>I understand</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+    <input-field type="colorpicker">
+        <name>buttonBgColor</name>
+        <label>Button Color</label>
+        <placeholder>blue</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+
+    <input-field type="colorpicker">
+        <name>buttonTextColor</name>
+        <label>Button Text Color</label>
+        <placeholder>blue</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+    <input-field type="colorpicker">
+        <name>linkTextColor</name>
+        <label>Link Text Color</label>
+        <placeholder>blue</placeholder>
+        <copyable>true</copyable>
+    </input-field>
+
+
+    <component name="sw-media-field">
+        <name>imageCookie</name>
+        <label>Image</label>
+        <label>Upload media or choose one from the media manager</label>
+    </component>
+    </card>
+</config>

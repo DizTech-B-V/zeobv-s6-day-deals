@@ -2,63 +2,49 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class DayDealPlugin extends Plugin {
     init() {
-        console.log('Day deal plugin registered');zz+
+        this.registerTimer()
 
-+
-    +++++this.registerTimer();
     }
 
     registerTimer() {
         console.log(this);
 
         // Set the date we're counting down to
-        var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+        const currentDateTime = new Date();
+
+        currentDateTime.setHours(23)
+        currentDateTime.setMinutes(59)
+        currentDateTime.setSeconds(59)
+        console.log(currentDateTime);
+        let countDownDate = currentDateTime.getTime();
 
 // Update the count down every 1 second
-        var x = setInterval(() => {
+        let x = setInterval(() => {
 
             // Get today's date and time
-            var now = new Date().getTime();
+            let now = new Date().getTime();
 
             // Find the distance between now and the count down date
-            var distance = countDownDate - now;
+            let distance = countDownDate - now;
 
             // Time calculations for days, hours, minutes and seconds
-
-
-                ++++
-
-                    +
-                        +ays = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor(++(di+++++++++++++++stance % (1000 * 60)) / 1000);
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Output the result in an element with id="demo"
-            this.el.innerHTML = days + "d " + hours + "h "
+            this.el.innerHTML = hours + "h "
                 + minutes + "m " + seconds + "s ";
 
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
-                this.el.innerHTML = "EXPIRED";
+                this.el.innerHTML = "The Day Deal is over. Wait for the next deal to appear";
             }
         }, 1000);
     }
+
 }
 
 
-+
-
-    ++
-
-        +
-
-            +
-
-
-                +
-
-                    ++
-                        +++
-                            +++++++++

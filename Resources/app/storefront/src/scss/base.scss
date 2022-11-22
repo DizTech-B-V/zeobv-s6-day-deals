@@ -1,25 +1,68 @@
-
-
+.div-splitter {
+    display: inline;
+}
 .block_zeobv_day_deal_component {
-    border: 1px solid black;
-    width: 50%;
-    height: 650px;
-    border-radius: 25px;
+    width: 584px;
+    height: 268px;
 }
 
-h2 {
-    text-align: center;
+.BlockTitle {
+    color: black;
+    font-size: 150px;
+    font-weight: bolder;
 }
 
-.product-slider-item {
-    text-align: center;
+.h2 {
+    color: rgb(1,0,165);
+    font-size: 45px;
 }
 
-#countdown {
-    display: inline-flex;
-    font-size: 50px;
+.product-image img {
     align-items: center;
-    margin: 0;
-    height: 70px;
-    width: 200px;
+    width: 220px;
+    height: 220px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+.zeobv-day-deal-name-timer {
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin-top: 80px;
+    align-items: center;
+    text-align: center;
+    color: #0000a4;
+}
+
+.zeobv-description {
+    display: block;
+    flex-direction: column;
+    float: right;
+    text-align: center;
+    padding-right: 7px;
+    margin-top: -120px;
+}
+
+.zeobv-day-deal-product-name {
+    position: relative;
+    top: 5px;
+}
+
+.dayDealTimer {
+    color: white;
+    font-size: x-large;
+    position: relative;
+    top: -13px;
+}
+
+.zeobv-day-deal-product-name {
+    font-size: large;
+    color: black;
+}
+.clockiconsvg {
+    width: auto;
+    height: 40px;
+    color: rgb(1,0,165);
 }

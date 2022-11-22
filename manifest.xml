@@ -38,6 +38,8 @@
                 <datetime name="zeobv_day_deal_date">
                     <!-- Translatable, the label of the field -->
                     <label>Input date day deal</label>
+                    <label lang="de-DE">Input date day deal</label>
+                    <label lang="nl-NL">Stel de datum van de dag deal in</label>
                     <!-- Optional, Default = 1, order your fields by specifying the position -->
                     <position>1</position>
                     <!-- Optional, Default = false, mark a field as required -->

@@ -31,12 +31,12 @@
             <defaultValue>rgb(0 132 144 / 15%)</defaultValue>
         </input-field>
 
-        <input-field>
+        <input-field type="int">
             <name>borderSize</name>
             <label>Border Size</label>
             <label lang="de-DE">Dicke der Umrandung</label>
             <label lang="nl-NL">Dikte van de rand</label>
-            <defaultValue>1px</defaultValue>
+            <defaultValue>1</defaultValue>
         </input-field>
 
         <input-field type="int">

@@ -12,7 +12,7 @@
             <label>Background Color</label>
             <label lang="de-DE">Hintergrundfarbe</label>
             <label lang="nl-NL">Achtergrond kleur</label>
-            <defaultValue>var(--white)</defaultValue>
+            <defaultValue>var(--bs-white)</defaultValue>
         </input-field>
 
         <input-field type="colorpicker">
@@ -20,7 +20,7 @@
             <label>Background Accent Color</label>
             <label lang="de-DE">Hintergrund-Akzentfarbe</label>
             <label lang="nl-NL">Achtergrond accentkleur</label>
-            <defaultValue>var(--light)</defaultValue>
+            <defaultValue>var(--bs-light)</defaultValue>
         </input-field>
 
         <input-field type="colorpicker">
@@ -52,7 +52,7 @@
             <label>Title Color</label>
             <label lang="de-DE">Titel Farbe</label>
             <label lang="nl-NL">Titel kleur</label>
-            <defaultValue>var(--primary)</defaultValue>
+            <defaultValue>var(--bs-primary)</defaultValue>
         </input-field>
 
         <input-field type="colorpicker">
@@ -60,7 +60,7 @@
             <label>Timer Color</label>
             <label lang="de-DE">Timer Farbe</label>
             <label lang="nl-NL">Timer kleur</label>
-            <defaultValue>var(--danger)</defaultValue>
+            <defaultValue>var(--bs-danger)</defaultValue>
         </input-field>
 
         <input-field type="colorpicker">
@@ -68,7 +68,7 @@
             <label>Text Color</label>
             <label lang="de-DE">Textfarbe</label>
             <label lang="nl-NL">Tekstkleur</label>
-            <defaultValue>var(--dark)</defaultValue>
+            <defaultValue>var(--bs-dark)</defaultValue>
         </input-field>
     </card>
 </config>

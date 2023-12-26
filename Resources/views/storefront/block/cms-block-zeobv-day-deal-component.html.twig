@@ -43,7 +43,7 @@
 					{% block element_product_slider_inner %}
 						{% block element_product_slider_element %}
 							<div class="product-slider-container" data-product-slider-container="true">
-									
+
 							{% for product in dayDealProducts %}
 								{% block element_product_slider_inner_item %}
 								
@@ -82,30 +82,7 @@
 												</div>
 
 												<div class="zeobv-day-deal__price">
-													{% set isListPrice = product.calculatedPrice.listPrice != null %}
-													<span class="product-price{% if isListPrice %} with-list-price{% endif %}">
-														{{ product.calculatedPrice.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
-
-														{% if isListPrice %}
-															{% set afterListPriceSnippetExists = "listing.afterListPrice"|trans|length > 0 %}
-															{% set beforeListPriceSnippetExists = "listing.beforeListPrice"|trans|length > 0 %}
-															{% set hideStrikeTrough = beforeListPriceSnippetExists or afterListPriceSnippetExists %}
-
-															<span class="list-price">
-																{% if beforeListPriceSnippetExists %}
-																	{{ "listing.beforeListPrice"|trans|trim|sw_sanitize }}
-																{% endif %}
-
-																<span class="list-price-price">{{ product.calculatedPrice.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
-
-																{% if afterListPriceSnippetExists %}
-																	{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}
-																{% endif %}
-
-																<span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': product.calculatedPrice.listPrice.percentage })|sw_sanitize }}</span>
-															</span>
-														{% endif %}
-													</span>
+													{% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
 												</div>
 
 												{% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}

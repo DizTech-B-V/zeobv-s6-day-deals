@@ -1,6 +1,6 @@
 # 2.0.1
 
--   Resolved the issue of the price display wrong.
+-   Resolved incorrect display of price
 
 # 2.0.0
 

@@ -1,6 +1,6 @@
 # 2.0.1
 
--   Das Problem der falschen Preisanzeige wurde behoben.
+-   Fehlerhafte Anzeige des Preises behoben
 
 # 2.0.0
 

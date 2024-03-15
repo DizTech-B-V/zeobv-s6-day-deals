@@ -1,3 +1,7 @@
+# 3.0.0
+
+-   6.6 compatibility added
+
 # 2.0.1
 
 -   Resolved incorrect display of price

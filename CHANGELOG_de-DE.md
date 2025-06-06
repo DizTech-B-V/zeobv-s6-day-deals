@@ -1,3 +1,7 @@
+# 4.0.0
+
+-   Kompatibilität mit Shopware 6.7 hinzugefügt.
+
 # 3.0.0
 
 -   6.6 Kompatibilität hinzugefügt
